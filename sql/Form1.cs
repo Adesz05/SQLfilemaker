@@ -23,7 +23,10 @@ namespace sql
         {
             openFileDialog1.ShowDialog();
             textBox1.Text = openFileDialog1.FileName;
+            if (textBox1.Text.Contains('.'))
+            {
             Beolvas(textBox1.Text);
+            }
         }
 
         private void Beolvas(string fajl)
@@ -53,7 +56,15 @@ namespace sql
                 ujComboBox.Items.Add("dátum");
                 ujComboBox.Items.Add("idő");
                 ujComboBox.Location = new Point(165, 138 + i * 50);
+                ujComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+                ujComboBox.SelectedItem = "szöveg";
                 this.Controls.Add(ujComboBox);
+
+                Label pelda = new Label();
+                pelda.Text = $"pl: {adatok[0].Rekordok[i].Eredeti}";
+                pelda.Location = new Point(400, 138 + i * 50);
+                this.Controls.Add(pelda);
+
                 mezoAdatok.Add(ujComboBox);
             }
 
