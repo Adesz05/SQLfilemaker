@@ -27,5 +27,29 @@ namespace sql
             }
             return adatok;
         }
+
+        static public void Kiiras(List<Mezo> adatok, string file)
+        {
+            string filename = NevBeallitas(file);
+
+            try
+            {
+                StreamWriter w = new StreamWriter(filename);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private static string NevBeallitas(string file)
+        {
+            string nev = file.Split('\\')[file.Split('\\').Length-1];
+            string utvonal = file.Substring(0, file.Length-nev.Length);
+            string filename = utvonal + "SQL" + nev.Split('.')[0] + ".sql";
+            return filename;
+        }
     }
 }

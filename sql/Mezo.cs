@@ -25,7 +25,7 @@ namespace sql
         {
             for (int i = 0; i < Rekordok.Count(); i++)
             {
-
+                Rekordok[i].SqlBeallitas(valasztottak);
             }
         }
     }

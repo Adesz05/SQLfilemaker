@@ -72,6 +72,12 @@ namespace sql
             {
                 adatok.RemoveAt(0);
             }
+            for (int i = 0; i < adatok.Count; i++)
+            {
+                adatok[i].RekordBeallitas(mezoAdatok);
+            }
+            FileIO.Kiiras(adatok, textBox1.Text);
+
 
         }
     }
