@@ -28,14 +28,34 @@ namespace sql
             return adatok;
         }
 
-        static public void Kiiras(List<Mezo> adatok, string file)
+        static public void Kiiras(List<Mezo> adatok, string file, string tabla)
         {
             string filename = NevBeallitas(file);
 
             try
             {
                 StreamWriter w = new StreamWriter(filename);
-
+                w.WriteLine($"INSERT INTO {tabla} VALUES ");
+                for (int i = 0; i < adatok.Count; i++)
+                {
+                    w.Write("(");
+                    for (int j = 0; j < adatok[i].Rekordok.Count; j++)
+                    {
+                        w.Write($"{adatok[i].Rekordok[j].Sql}");
+                        if (j < adatok[i].Rekordok.Count-1 )
+                        {
+                            w.Write(",");
+                        }
+                    }
+                    w.Write(")");
+                    if (i<adatok.Count-1)
+                    {
+                        w.Write(",");
+                    }
+                    w.WriteLine();
+                }
+                w.Write(";");
+                w.Close();
             }
             catch (Exception)
             {

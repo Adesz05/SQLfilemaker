@@ -76,7 +76,8 @@ namespace sql
             {
                 adatok[i].RekordBeallitas(mezoAdatok);
             }
-            FileIO.Kiiras(adatok, textBox1.Text);
+            FileIO.Kiiras(adatok, textBox1.Text, textBox2.Text);
+            MessageBox.Show("A kért művelet sikeres", "Eredmény", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
 
         }

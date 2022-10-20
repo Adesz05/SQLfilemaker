@@ -17,27 +17,24 @@ namespace sql
             Eredeti = eredeti;
         }
 
-        public void SqlBeallitas(List<ComboBox> valasztottak)
+        public void SqlBeallitas(List<ComboBox> valasztottak, int index)
         {
-            for (int i = 0; i < valasztottak.Count; i++)
+            switch (valasztottak[index].SelectedItem)
             {
-                switch (valasztottak[i].SelectedItem)
-                {
-                    case "szám":
-                        Sql = Eredeti;
-                        break;
-                    case "szöveg":
-                        Sql = $"\"{Eredeti}\"";
-                        break;
-                    case "idő":
-                        Sql = Eredeti;
-                        break;
-                    case "dátum":
-                        Sql = Eredeti.Replace('.', '-');
-                        break;
-                    default:
-                        break;
-                }
+                case "szám":
+                    Sql = Eredeti;
+                    break;
+                case "szöveg":
+                    Sql = $"\"{Eredeti}\"";
+                    break;
+                case "idő":
+                    Sql = Eredeti;
+                    break;
+                case "dátum":
+                    Sql = $"\"Eredeti.Replace('.', '-')\"";
+                    break;
+                default:
+                    break;
             }
         }
     }
