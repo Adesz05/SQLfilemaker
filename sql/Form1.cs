@@ -13,6 +13,7 @@ namespace sql
     public partial class Form1 : Form
     {
         static List<Mezo> adatok =new List<Mezo>();
+        static List<ComboBox> mezoAdatok = new List<ComboBox>();
         public Form1()
         {
             InitializeComponent();
@@ -33,18 +34,12 @@ namespace sql
                 MessageBox.Show("Nem sikerült 1 sor adatot sem beolvasni!","Hiba",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Restart();
             }
-
-            if (checkBox1.Checked)
-            {
-                adatok.RemoveAt(0);
-            }
-
             Mezobeallitas();
         }
 
         private void Mezobeallitas()
         {
-            List<ComboBox> mezoAdatok = new List<ComboBox>();
+            mezoAdatok = new List<ComboBox>();
             for (int i = 0; i < adatok[0].Rekordok.Count; i++)
             {
                 Label ujlabel = new Label();
@@ -73,7 +68,11 @@ namespace sql
 
         private void mentes_klikk(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (checkBox1.Checked)
+            {
+                adatok.RemoveAt(0);
+            }
+
         }
     }
 }
